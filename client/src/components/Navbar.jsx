@@ -182,50 +182,6 @@ const Navbar = () => {
 
         {isAuthenticated ? (
           <>
-            {/* <Link
-              to="/dashboard"
-              className="text-gray-700 hover:text-indigo-600 font-medium"
-            >
-              Dashboard
-            </Link>
-            <Link
-              to="/upload"
-              className="text-gray-700 hover:text-indigo-600 font-medium"
-            >
-              Upload
-            </Link>
-            <Link
-              to="/uploadhistory"
-              className="text-gray-700 hover:text-indigo-600 font-medium"
-            >
-              History
-            </Link>
-            <Link
-              to="/chart"
-              className="text-gray-700 hover:text-indigo-600 font-medium"
-            >
-              Charts
-            </Link> */}
-
-            {/* 🔐 Show only for Admin */}
-            {/* {user?.isAdmin && (
-              <>
-                <Link
-                  to="/admin"
-                  className="text-gray-700 hover:text-indigo-600 font-medium"
-                >
-                  Admin Dashboard
-                </Link>
-                <Link
-                  to="/all-users"
-                  className="text-gray-700 hover:text-indigo-600 font-medium"
-                >
-                  All Users
-                </Link>
-              </>
-            )} */}
-
-            {/* edit by me */}
             {user?.isAdmin ? (
               <>
                 <Link
