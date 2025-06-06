@@ -804,7 +804,7 @@ const ChartPage = () => {
         maxWidth: "90vw",
         width: "720px",
         minHeight: "650px",
-        marginTop: "80px",
+        marginTop: "32px",
         marginBottom: "30px",
       }}
     >
