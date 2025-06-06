@@ -168,7 +168,7 @@ const DashBoard = () => {
   }).length;
 
   return (
-    <div className="px-4 md:px-8 lg:px-16 pt-20 max-w-6xl mx-auto">
+    <div className="bg-gradient-to-br from-gray-200 to-indigo-100 px-4 md:px-8 lg:px-16 pt-20 max-w-6xl mx-auto">
       <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-10">
         📊 Upload Dashboard
       </h2>
@@ -193,7 +193,7 @@ const DashBoard = () => {
 
       {/* 📈 Line Chart */}
       {history.length > 0 ? (
-        <div className="bg-white p-6 rounded-2xl shadow-xl">
+        <div className="bg-gradient-to-br from-slate-300 to-gray-300 p-6 rounded-2xl shadow-xl">
           <h3 className="text-lg font-semibold mb-4 text-center text-gray-800">
             Uploads Over Time
           </h3>
@@ -202,9 +202,8 @@ const DashBoard = () => {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="date" />
               <YAxis
-                // domain={["auto", "auto"]} // Set Y-Axis domain to auto
-                ticks={chartData.map((data) => data.count)} // Ensure only the counts are considered
-                tickFormatter={(value) => Math.floor(value)} // Remove decimal values
+                ticks={chartData.map((data) => data.count)}
+                tickFormatter={(value) => Math.floor(value)}
               />
               <Tooltip />
               <Line

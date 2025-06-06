@@ -44,9 +44,9 @@ const UploadHistory = () => {
           No uploads yet. Upload something to see history.
         </p>
       ) : (
-        <div className="w-full overflow-x-auto mt-4">
-          <table className="min-w-full border border-gray-200 divide-y divide-gray-200 shadow-sm rounded-lg">
-            <thead className="bg-gray-100">
+        <div className=" w-full overflow-x-auto mt-4">
+          <table className="min-w-full border border-gray-300 divide-y divide-gray-200 shadow-sm rounded-lg">
+            <thead className="bg-gray-300">
               <tr>
                 <th className="text-center px-4 py-2 text-sm font-semibold text-gray-700">
                   File
@@ -59,7 +59,7 @@ const UploadHistory = () => {
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-100">
+            <tbody className="bg-gray-200 divide-y divide-gray-100">
               {history.map((entry, index) => (
                 <tr key={index}>
                   <td className="text-center px-4 py-2 text-sm text-gray-800 whitespace-nowrap">

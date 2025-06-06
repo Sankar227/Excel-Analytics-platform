@@ -37,9 +37,9 @@ const UploadPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white px-4 pt-24 sm:px-6 lg:px-12">
+    <div className="min-h-screen px-4 pt-24 sm:px-6 lg:px-12">
       <ToastContainer position="top-center" />
-      <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl p-6 border border-gray-200">
+      <div className="max-w-4xl mx-auto bg-gradient-to-t  shadow-lg rounded-2xl p-6 border border-gray-200">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
           Upload Excel/CSV File
         </h2>
@@ -57,14 +57,15 @@ const UploadPage = () => {
             Upload
           </button>
         </div>
-        <div className="mt-4">
+        
+        {/* <div className="mt-4">
           <h3 className="text-lg font-semibold text-gray-700 mb-2">
             Data Preview
           </h3>
           <div className="bg-gray-100 rounded-lg p-4 overflow-x-auto max-h-64 text-sm whitespace-pre-wrap break-all border border-gray-200">
             <pre>{JSON.stringify(data, null, 2)}</pre>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

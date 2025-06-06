@@ -4,7 +4,7 @@ import FeatureCard from "../components/FeatureCard";
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800">
+    <div className="min-h-screen bg-gradient-to-br from-gray-200 to-indigo-100 text-gray-800">
       <section className="flex flex-col items-center justify-center text-center py-20 px-4 bg-gradient-to-br from-blue-500 to-indigo-600 text-white">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
           Excel Analytics Platform
@@ -22,7 +22,7 @@ const HomePage = () => {
         </Link>
       </section>
 
-      <section className="py-16 px-6 md:px-20 bg-white">
+      <section className="py-16 px-6 md:px-20 ">
         <h2 className="text-3xl font-bold text-center mb-10">
           Platform Features
         </h2>

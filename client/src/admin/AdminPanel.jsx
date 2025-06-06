@@ -33,18 +33,18 @@ const AdminPanel = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="p-6 min-h-screen">
       <ToastContainer position="top-center" />
       <h1 className="text-3xl font-bold mb-6 text-blue-700">Admin Dashboard</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-        <div className="bg-white p-6 rounded shadow text-center">
+        <div className="bg-gradient-to-t from-amber-400 to-amber-100 p-6 rounded shadow text-center">
           <h2 className="text-lg font-semibold">Total Users</h2>
           <p className="text-4xl text-blue-600">{users.length}</p>
         </div>
-        <div className="bg-white p-6 rounded shadow text-center">
+        <div className="bg-gradient-to-tr from-emerald-300 to-emerald-600 p-6 rounded shadow text-center">
           <h2 className="text-lg font-semibold">Total File Uploads</h2>
-          <p className="text-4xl text-green-600">{uploads.length}</p>
+          <p className="text-4xl text-rose-400">{uploads.length}</p>
         </div>
       </div>
 
@@ -52,7 +52,7 @@ const AdminPanel = () => {
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white rounded shadow text-left">
           <thead>
-            <tr className="bg-blue-100 text-blue-800">
+            <tr className="bg-blue-200 text-blue-800">
               <th className="px-4 py-2">File Name</th>
               <th className="px-4 py-2">Uploaded By</th>
               <th className="px-4 py-2">Uploaded At</th>

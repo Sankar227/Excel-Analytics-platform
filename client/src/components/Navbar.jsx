@@ -28,7 +28,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-white shadow px-4 py-3 flex items-center justify-between">
+    <nav className="bg-gradient-to-br from-cyan-200 to-gray-300 shadow px-4 py-3 flex items-center justify-between">
       <Link to="/" className="text-xl font-bold text-indigo-600">
         Excel Analytics
       </Link>
@@ -92,14 +92,14 @@ const Navbar = () => {
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="flex items-center space-x-2 hover:bg-gray-100 px-3 py-2 rounded-md transition"
+                className="flex items-center space-x-2 px-3 py-2 rounded-md transition"
               >
                 <div className="w-8 h-8 bg-indigo-500 text-white flex items-center justify-center rounded-full text-sm font-semibold">
                   {user?.name
                     ? user.name.charAt(0).toUpperCase()
                     : user?.email.charAt(0).toUpperCase()}
                 </div>
-                <span className="text-sm font-medium text-gray-700">
+                <span className="text-sm font-medium text-gray-700 hover:text-indigo-600 hover:underline">
                   {user?.name || user?.email}
                 </span>
               </button>
