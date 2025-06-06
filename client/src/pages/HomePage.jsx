@@ -1,15 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
 import FeatureCard from "../components/FeatureCard";
 
 const HomePage = () => {
-  const isAuthenticated = false; // Replace with real auth logic
-
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800">
-      {/* <Navbar isAuthenticated={isAuthenticated} /> */}
-
       <section className="flex flex-col items-center justify-center text-center py-20 px-4 bg-gradient-to-br from-blue-500 to-indigo-600 text-white">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
           Excel Analytics Platform
@@ -49,11 +44,6 @@ const HomePage = () => {
           />
         </div>
       </section>
-
-      {/* <footer className="text-center text-sm text-gray-500 py-8">
-        © {new Date().getFullYear()} Excel Analytics Platform. All rights
-        reserved.
-      </footer> */}
     </div>
   );
 };

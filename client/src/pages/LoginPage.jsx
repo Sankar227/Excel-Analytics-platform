@@ -30,10 +30,26 @@ const LoginPage = () => {
           values
         );
         toast.success("Login successful!");
-        dispatch(setAuthData({ token: res.data.token, user: res.data.user }));
-        setTimeout(() => navigate("/dashboard"), 1500);
+        const { token, user } = res.data;
+        dispatch(setAuthData({ token, user }));
+
+        //Check if user is admin and navigate accordingly
+        setTimeout(() => {
+          if (user.isAdmin) {
+            navigate("/admin");
+          } else {
+            navigate("/dashboard");
+          }
+        }, 1000);
       } catch (err) {
-        toast.error(err.response?.data?.message || "Invalid Credentials");
+        const status = err.response?.status;
+        const message = err.response?.data?.error || "Invalid Credentials";
+
+        if (status === 403) {
+          toast.error("Your account has been blocked by the admin.");
+        } else {
+          toast.error(message);
+        }
       } finally {
         setLoading(false);
       }
@@ -127,87 +143,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
-// import React, { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
-
-// const Login = () => {
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     const auth = localStorage.getItem("user");
-//     if (auth) {
-//       navigate("/dashboard");
-//     }
-//   }, []);
-
-//   const handleLogin = async (e) => {
-//     e.preventDefault();
-//     const credentials = { email, password };
-
-//     let result = await fetch("http://localhost:5000/auth/login", {
-//       method: "post",
-//       body: JSON.stringify(credentials),
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     });
-
-//     result = await result.json();
-//     // console.log(result);
-
-//     if (result) {
-//       localStorage.setItem("user", JSON.stringify(result.user));
-//       localStorage.setItem("token", result.token);
-//       navigate("/dashboard");
-//     } else {
-//       alert("Invalid login details");
-//     }
-//   };
-
-//   return (
-//     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
-//       <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-sm md:max-w-md">
-//         <h2 className="text-3xl font-bold mb-6 text-center text-blue-600">
-//           Login
-//         </h2>
-//         <form className="space-y-4">
-//           <input
-//             type="email"
-//             placeholder="Email"
-//             className="w-full border rounded px-4 py-2 focus:ring-2 focus:ring-blue-400"
-//             value={email}
-//             onChange={(e) => setEmail(e.target.value)}
-//           />
-//           <input
-//             type="password"
-//             placeholder="Password"
-//             className="w-full border rounded px-4 py-2 focus:ring-2 focus:ring-blue-400"
-//             value={password}
-//             onChange={(e) => setPassword(e.target.value)}
-//           />
-//           <button
-//             type="submit"
-//             onClick={handleLogin}
-//             className="w-full py-2 rounded text-white font-semibold bg-blue-500 hover:bg-blue-600"
-//           >
-//             Login
-//           </button>
-//         </form>
-//         <p className="text-center text-sm text-gray-600 mt-4">
-//           Don't have an account?{" "}
-//           <span
-//             className="text-blue-500 hover:underline cursor-pointer"
-//             onClick={() => navigate("/signup")}
-//           >
-//             Sign Up
-//           </span>
-//         </p>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Login;

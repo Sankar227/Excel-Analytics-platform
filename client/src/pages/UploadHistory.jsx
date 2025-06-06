@@ -44,40 +44,6 @@ const UploadHistory = () => {
           No uploads yet. Upload something to see history.
         </p>
       ) : (
-        //       (
-        // <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        //   {history.map((entry, index) => (
-        //     <div
-        //       key={index}
-        //       className="bg-white p-5 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between"
-        //     >
-        //       <div>
-        //         <p className="text-gray-700 text-sm mb-1">
-        //           <span className="font-medium text-gray-900">File:</span>{" "}
-        //           {entry.fileName}
-        //         </p>
-        //         <p className="text-gray-600 text-sm mb-3">
-        //           Uploaded at:{" "}
-        //           <span className="italic">
-        //             {new Date(entry.timestamp).toLocaleString()}
-        //           </span>
-        //         </p>
-        //         <div className="bg-gray-100 rounded p-2 mb-4 overflow-x-auto text-xs">
-        //           <pre>
-        //             {JSON.stringify(entry.preview.slice(0, 3), null, 2)}
-        //           </pre>
-        //         </div>
-        //       </div>
-        //       <button
-        //         onClick={() => handleDelete(entry._id)}
-        //         className="self-start mt-2 text-red-600 border border-red-400 px-3 py-1 rounded-md hover:bg-red-50 text-sm transition-colors duration-200"
-        //       >
-        //         Delete
-        //       </button>
-        //     </div>
-        //   ))}
-        // </div>
-        //       )
         <div className="w-full overflow-x-auto mt-4">
           <table className="min-w-full border border-gray-200 divide-y divide-gray-200 shadow-sm rounded-lg">
             <thead className="bg-gray-100">

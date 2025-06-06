@@ -60,8 +60,6 @@
 
 // export default App;
 
-
-
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -74,11 +72,13 @@ import DashBoard from "./pages/DashBoard";
 import UploadHistory from "./pages/UploadHistory";
 import UploadPage from "./pages/UploadPage";
 import ChartPage from "./pages/ChartPage";
-import AdminPanel from "./pages/AdminPanel";
 
 // Components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import PrivateRouteAdmin from "./admin/PrivateRouteAdmin";
+import AdminPanel from "./admin/AdminPanel";
+import AllUsersPage from "./pages/Admin/AllUsersPage";
 
 function App() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -131,7 +131,30 @@ function App() {
             />
 
             {/* Optional: Protect admin route or manage with role-based logic */}
-            <Route path="/admin" element={<AdminPanel />} />
+            <Route
+              path="/admin"
+              element={
+                <PrivateRouteAdmin>
+                  <AdminPanel />
+                </PrivateRouteAdmin>
+              }
+            />
+            <Route
+              path="/all-users"
+              element={
+                <PrivateRouteAdmin>
+                  <AllUsersPage />
+                </PrivateRouteAdmin>
+              }
+            />
+            {/* <Route
+              path="/admin-dashboard"
+              element={
+                <AdminRoute>
+                  <AdminDashboard />
+                </AdminRoute>
+              }
+            /> */}
           </Routes>
         </main>
 
