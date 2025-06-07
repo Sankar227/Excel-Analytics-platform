@@ -168,7 +168,7 @@ const DashBoard = () => {
   }).length;
 
   return (
-    <div className="bg-gradient-to-br from-gray-200 to-indigo-100 px-4 md:px-8 lg:px-16 pt-20 max-w-6xl mx-auto">
+    <div className=" px-4 md:px-8 lg:px-16 pt-20 max-w-6xl mx-auto">
       <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-10">
         📊 Upload Dashboard
       </h2>

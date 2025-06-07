@@ -8,7 +8,6 @@ import "react-toastify/dist/ReactToastify.css";
 const UploadPage = () => {
   const [file, setFile] = useState(null);
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.upload.data);
   const token = useSelector((state) => state.auth.token);
 
   const handleFileChange = (e) => {
@@ -63,15 +62,6 @@ const UploadPage = () => {
             Upload
           </button>
         </div>
-
-        {/* <div className="mt-4">
-          <h3 className="text-lg font-semibold text-gray-700 mb-2">
-            Data Preview
-          </h3>
-          <div className="bg-gray-100 rounded-lg p-4 overflow-x-auto max-h-64 text-sm whitespace-pre-wrap break-all border border-gray-200">
-            <pre>{JSON.stringify(data, null, 2)}</pre>
-          </div>
-        </div> */}
       </div>
     </div>
   );

@@ -16,6 +16,16 @@ const Navbar = () => {
     navigate("/login");
   };
 
+  const handleProfile = () => {
+    if (user?._id) {
+      navigate(`/profile/${user._id}`);
+      console.log("Navigating to profile for user ID:", user._id);
+    } else {
+      console.error("User ID is undefined");
+    }
+    console.log("User object:", user);
+  };
+
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -108,7 +118,7 @@ const Navbar = () => {
                     : user?.email.charAt(0).toUpperCase()}
                 </div>
                 <span className="text-sm font-medium text-gray-700 hover:text-indigo-600 hover:underline">
-                  {user?.name || user?.email}
+                  {user?.name.toUpperCase() || user?.email.toUpperCase()}
                 </span>
               </button>
 
@@ -120,6 +130,14 @@ const Navbar = () => {
                   >
                     Logout
                   </button>
+                  {!user?.isAdmin && (
+                    <button
+                      onClick={handleProfile}
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Profile
+                    </button>
+                  )}
                 </div>
               )}
             </div>

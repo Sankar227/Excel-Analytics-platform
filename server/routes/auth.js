@@ -37,7 +37,7 @@ router.post("/login", async (req, res) => {
   );
   res.json({
     token,
-    user: { id: user._id, name: user.name, isAdmin: user.isAdmin },
+    user: { _id: user._id, name: user.name, isAdmin: user.isAdmin },
   });
 });
 
@@ -90,5 +90,38 @@ router.delete(
     }
   }
 );
+
+router.get("/profile/users/:id", authenticate, (req, res) => {
+  const { id } = req.params;
+  User.findById(id)
+    .then((user) => res.json(user))
+    .catch((err) => {
+      res.status(500).json({ error: "Server error" });
+    });
+});
+
+router.put("/profile/users/:id", authenticate, async (req, res) => {
+  const { name, email, currentPassword, newPassword } = req.body;
+  const user = await User.findById(req.user.id);
+
+  if (!user) return res.status(404).json({ error: "User not found" });
+
+  if (currentPassword && newPassword) {
+    const isMatch = bcrypt.compare(currentPassword, user.password);
+    if (!isMatch) return res.status(401).json({ error: "Invalid password" });
+
+    user.password = await bcrypt.hash(newPassword, 10);
+  }
+
+  user.name = name || user.name;
+  user.email = email || user.email;
+
+  try {
+    await user.save();
+    res.json({ message: "Profile updated successfully" });
+  } catch (err) {
+    res.status(400).json({ error: "Failed to update profile" });
+  }
+});
 
 module.exports = router;

@@ -17,6 +17,7 @@ import Footer from "./components/Footer";
 import PrivateRouteAdmin from "./admin/PrivateRouteAdmin";
 import AdminPanel from "./admin/AdminPanel";
 import AllUsersPage from "./pages/Admin/AllUsersPage";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -28,7 +29,7 @@ function App() {
         <Navbar isAuthenticated={isAuthenticated} />
 
         {/* Main page content */}
-        <main className="flex-grow bg-gradient-to-br from-gray-200 to-indigo-100">
+        <main className="flex-grow bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100">
           <Routes>
             <Route path="/" element={<Home />} />
 
@@ -67,6 +68,8 @@ function App() {
               path="/chart"
               element={isAuthenticated ? <ChartPage /> : <Navigate to="/" />}
             />
+
+            <Route path="/profile/:id" element={<ProfilePage />} />
 
             <Route
               path="/admin"

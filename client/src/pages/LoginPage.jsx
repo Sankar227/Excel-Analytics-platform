@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import { setAuthData } from "../redux/slices/authSlice";
+import { Mail, Lock } from "lucide-react";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -33,7 +34,6 @@ const LoginPage = () => {
         const { token, user } = res.data;
         dispatch(setAuthData({ token, user }));
 
-        //Check if user is admin and navigate accordingly
         setTimeout(() => {
           if (user.isAdmin) {
             navigate("/admin");
@@ -57,45 +57,59 @@ const LoginPage = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100">
       <ToastContainer
         position="top-center"
         autoClose={2000}
         pauseOnFocusLoss={false}
         pauseOnHover={false}
       />
-      <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
-        <h2 className="text-3xl font-bold mb-6 text-center text-blue-600">
+      <div
+        className="
+          p-8 rounded-3xl w-full max-w-md
+          bg-white/30 backdrop-blur-md
+          border border-white/40
+          shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]
+          transition-transform duration-300
+        "
+      >
+        <h2 className="text-3xl font-bold mb-6 text-center text-blue-700">
           Login
         </h2>
         <form onSubmit={formik.handleSubmit} className="space-y-4">
           {/* Email */}
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            className="w-full border rounded px-4 py-2 focus:ring-2 focus:ring-blue-400"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-          />
-          {formik.touched.email && formik.errors.email && (
-            <p className="text-red-500 text-sm">{formik.errors.email}</p>
-          )}
+          <div className="relative">
+            <Mail className="absolute top-3 left-3 h-5 w-5 text-gray-400" />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              className="w-full border rounded pl-10 pr-4 py-2 bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
+            />
+            {formik.touched.email && formik.errors.email && (
+              <p className="text-red-500 text-sm">{formik.errors.email}</p>
+            )}
+          </div>
 
           {/* Password */}
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            className="w-full border rounded px-4 py-2 focus:ring-2 focus:ring-blue-400"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-          />
-          {formik.touched.password && formik.errors.password && (
-            <p className="text-red-500 text-sm">{formik.errors.password}</p>
-          )}
+          <div className="relative">
+            <Lock className="absolute top-3 left-3 h-5 w-5 text-gray-400" />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              className="w-full pl-10 pr-4 border rounded py-2 bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+            />
+            {formik.touched.password && formik.errors.password && (
+              <p className="text-red-500 text-sm">{formik.errors.password}</p>
+            )}
+          </div>
 
           {/* Submit */}
           <button
@@ -113,15 +127,18 @@ const LoginPage = () => {
 
         {/* OAuth Buttons */}
         <div className="mt-6 space-y-2">
-          <div className="text-center text-gray-500 text-sm">or login with</div>
-          <button className="flex items-center justify-center gap-2 w-full border px-4 py-2 rounded hover:bg-gray-100">
-            <img
-              src="https://www.svgrepo.com/show/475656/google-color.svg"
-              alt="Google"
-              className="w-5 h-5"
-            />
-            Continue with Google
-          </button>
+          <div className="text-center text-gray-600 text-sm">or login with</div>
+          <a href="https://www.gmail.com">
+            <button className="flex items-center justify-center gap-2 w-full border px-4 py-2 rounded hover:bg-gray-100">
+              <img
+                src="https://www.svgrepo.com/show/475656/google-color.svg"
+                alt="Google"
+                className="w-5 h-5"
+              />
+              Continue with Google
+            </button>
+          </a>
+
           <button className="flex items-center justify-center gap-2 w-full border px-4 py-2 rounded hover:bg-gray-100">
             <img
               src="https://www.svgrepo.com/show/157810/facebook.svg"
@@ -133,11 +150,11 @@ const LoginPage = () => {
         </div>
 
         {/* Register redirect */}
-        <p className="text-center text-sm text-gray-600 mt-4">
+        <p className="text-center text-sm text-gray-700 mt-4">
           Don't have an account?{" "}
           <span
             onClick={() => navigate("/register")}
-            className="text-blue-500 hover:underline cursor-pointer"
+            className="text-blue-600 hover:underline cursor-pointer"
           >
             Register here
           </span>
