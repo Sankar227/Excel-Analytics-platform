@@ -3,6 +3,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setData } from "../redux/slices/uploadSlice";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const UploadPage = () => {
   const [file, setFile] = useState(null);
@@ -38,7 +39,12 @@ const UploadPage = () => {
 
   return (
     <div className="min-h-screen px-4 pt-24 sm:px-6 lg:px-12">
-      <ToastContainer position="top-center" />
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        pauseOnFocusLoss={false}
+        pauseOnHover={false}
+      />
       <div className="max-w-4xl mx-auto bg-gradient-to-t  shadow-lg rounded-2xl p-6 border border-gray-200">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
           Upload Excel/CSV File
@@ -57,7 +63,7 @@ const UploadPage = () => {
             Upload
           </button>
         </div>
-        
+
         {/* <div className="mt-4">
           <h3 className="text-lg font-semibold text-gray-700 mb-2">
             Data Preview

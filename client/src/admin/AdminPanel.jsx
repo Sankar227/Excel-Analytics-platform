@@ -3,6 +3,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUsers, setUploads, removeUpload } from "../redux/slices/adminSlice";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AdminPanel = () => {
   const dispatch = useDispatch();
@@ -34,7 +35,12 @@ const AdminPanel = () => {
 
   return (
     <div className="p-6 min-h-screen">
-      <ToastContainer position="top-center" />
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        pauseOnFocusLoss={false}
+        pauseOnHover={false}
+      />
       <h1 className="text-3xl font-bold mb-6 text-blue-700">Admin Dashboard</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">

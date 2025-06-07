@@ -29,8 +29,16 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gradient-to-br from-cyan-200 to-gray-300 shadow px-4 py-3 flex items-center justify-between">
-      <Link to="/" className="text-xl font-bold text-indigo-600">
-        Excel Analytics
+      <Link
+        to="/"
+        className="text-xl font-bold text-indigo-600 flex items-center space-x-2"
+      >
+        <img
+          src="https://img.icons8.com/?size=100&id=DqL6HmxuqMzX&format=png&color=000000"
+          alt="Logo"
+          className="w-10 h-10"
+        />
+        <span>Excel Analytics</span>
       </Link>
 
       <div className="space-x-4 flex items-center">

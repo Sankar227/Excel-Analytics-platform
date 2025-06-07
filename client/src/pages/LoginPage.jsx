@@ -58,7 +58,12 @@ const LoginPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
-      <ToastContainer position="top-center" />
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        pauseOnFocusLoss={false}
+        pauseOnHover={false}
+      />
       <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
         <h2 className="text-3xl font-bold mb-6 text-center text-blue-600">
           Login
