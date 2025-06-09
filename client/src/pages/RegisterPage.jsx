@@ -151,14 +151,6 @@ const RegisterPage = () => {
             />
             Sign up with Google
           </button>
-          <button className="flex items-center justify-center gap-2 w-full border px-4 py-2 rounded hover:bg-gray-100">
-            <img
-              src="https://www.svgrepo.com/show/157810/facebook.svg"
-              alt="Facebook"
-              className="w-5 h-5"
-            />
-            Sign up with Facebook
-          </button>
         </div>
 
         {/* Login redirect */}
@@ -177,4 +169,3 @@ const RegisterPage = () => {
 };
 
 export default RegisterPage;
-
