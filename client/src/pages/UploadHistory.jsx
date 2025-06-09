@@ -16,7 +16,7 @@ const UploadHistory = () => {
     } catch (err) {
       console.error("Failed to load history", err);
     }
-  }, [token]); // redefined only when `token` changes
+  }, [token]); 
 
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this file?")) return;

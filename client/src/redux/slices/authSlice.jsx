@@ -13,8 +13,8 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setAuthData: (state, action) => {
-      state.token = action.payload.token;
       state.user = action.payload.user;
+      state.token = action.payload.token;
       state.isAuthenticated = true;
 
       // Save to localStorage
@@ -31,7 +31,7 @@ const authSlice = createSlice({
     },
     updateUser: (state, action) => {
       state.user = { ...state.user, ...action.payload };
-      // localStorage.setItem("user", JSON.stringify(state.user));
+      localStorage.setItem("user", JSON.stringify(state.user));
     },
   },
 });

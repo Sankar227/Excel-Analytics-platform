@@ -9,6 +9,8 @@ import { useDispatch } from "react-redux";
 import { setAuthData } from "../redux/slices/authSlice";
 import { Mail, Lock } from "lucide-react";
 
+import GoogleLoginButton from "../components/GoogleLoginButton";
+
 const LoginPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -43,7 +45,7 @@ const LoginPage = () => {
         }, 1000);
       } catch (err) {
         const status = err.response?.status;
-        const message = err.response?.data?.error || "Invalid Credentials";
+        const message = err.response?.data?.error || "Invalid Details";
 
         if (status === 403) {
           toast.error("Your account has been blocked by the admin.");
@@ -128,25 +130,12 @@ const LoginPage = () => {
         {/* OAuth Buttons */}
         <div className="mt-6 space-y-2">
           <div className="text-center text-gray-600 text-sm">or login with</div>
-          <a href="https://www.gmail.com">
-            <button className="flex items-center justify-center gap-2 w-full border px-4 py-2 rounded hover:bg-gray-100">
-              <img
-                src="https://www.svgrepo.com/show/475656/google-color.svg"
-                alt="Google"
-                className="w-5 h-5"
-              />
-              Continue with Google
-            </button>
-          </a>
 
-          <button className="flex items-center justify-center gap-2 w-full border px-4 py-2 rounded hover:bg-gray-100">
-            <img
-              src="https://www.svgrepo.com/show/157810/facebook.svg"
-              alt="Facebook"
-              className="w-5 h-5"
-            />
-            Continue with Facebook
-          </button>
+          <GoogleLoginButton />
+
+          {/* <button className="w-full">
+            <GoogleLogin />
+          </button> */}
         </div>
 
         {/* Register redirect */}
