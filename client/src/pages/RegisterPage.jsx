@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Lock, Mail, User } from "lucide-react";
+import GoogleLoginButton from "../components/GoogleLoginButton";
 
 // Helper to calculate password strength
 const getPasswordStrength = (password) => {
@@ -48,63 +50,72 @@ const RegisterPage = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100">
       <ToastContainer
         position="top-center"
         autoClose={2000}
         pauseOnFocusLoss={false}
         pauseOnHover={false}
       />
-      <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
+      <div className="p-8 rounded-xl w-full max-w-md bg-white/20 backdrop-blur-md border border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] transition-transform duration-300">
         <h2 className="text-3xl font-bold mb-6 text-center text-blue-600">
           Create Account
         </h2>
         <form onSubmit={formik.handleSubmit} className="space-y-4">
           {/* Name */}
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            className="w-full border rounded px-4 py-2 focus:ring-2 focus:ring-blue-400"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.name}
-          />
-          {formik.touched.name && formik.errors.name && (
-            <p className="text-red-500 text-sm">{formik.errors.name}</p>
-          )}
+          <div className="relative">
+            <User className="absolute top-3 left-3 h-5 w-5 text-gray-400" />
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              className="w-full border rounded pl-10 pr-4 py-2 bg-white/0 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.name}
+            />
+            {formik.touched.name && formik.errors.name && (
+              <p className="text-red-500 text-sm">{formik.errors.name}</p>
+            )}
+          </div>
 
           {/* Email */}
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            className="w-full border rounded px-4 py-2 focus:ring-2 focus:ring-blue-400"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-          />
-          {formik.touched.email && formik.errors.email && (
-            <p className="text-red-500 text-sm">{formik.errors.email}</p>
-          )}
+          <div className="relative">
+            <Mail className="absolute top-3 left-3 h-5 w-5 text-gray-400" />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              className="w-full border rounded pl-10 pr-4 py-2 bg-white/0 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
+            />
+            {formik.touched.email && formik.errors.email && (
+              <p className="text-red-500 text-sm">{formik.errors.email}</p>
+            )}
+          </div>
 
           {/* Password */}
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            className="w-full border rounded px-4 py-2 focus:ring-2 focus:ring-blue-400"
-            onChange={(e) => {
-              formik.handleChange(e);
-              const value = e.target.value;
-              setPasswordStrength(value ? getPasswordStrength(value) : "");
-            }}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-          />
-          {formik.touched.password && formik.errors.password && (
-            <p className="text-red-500 text-sm">{formik.errors.password}</p>
-          )}
+          <div className="relative">
+            <Lock className="absolute top-3 left-3 h-5 w-5 text-gray-400" />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              className="w-full pl-10 pr-4 border rounded py-2 bg-white/0 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              onChange={(e) => {
+                formik.handleChange(e);
+                const value = e.target.value;
+                setPasswordStrength(value ? getPasswordStrength(value) : "");
+              }}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+            />
+            {formik.touched.password && formik.errors.password && (
+              <p className="text-red-500 text-sm">{formik.errors.password}</p>
+            )}
+          </div>
 
           {/* Password Strength */}
           {formik.values.password && (
@@ -143,21 +154,14 @@ const RegisterPage = () => {
           <div className="text-center text-gray-500 text-sm">
             or sign up with
           </div>
-          <button className="flex items-center justify-center gap-2 w-full border px-4 py-2 rounded hover:bg-gray-100">
-            <img
-              src="https://www.svgrepo.com/show/475656/google-color.svg"
-              alt="Google"
-              className="w-5 h-5"
-            />
-            Sign up with Google
-          </button>
+          <GoogleLoginButton />
         </div>
 
         {/* Login redirect */}
         <p className="text-center text-sm text-gray-600 mt-4">
           Already have an account?{" "}
           <span
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/login")}
             className="text-blue-500 hover:underline cursor-pointer"
           >
             Login here

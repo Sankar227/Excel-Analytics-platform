@@ -69,7 +69,7 @@ const LoginPage = () => {
       <div
         className="
           p-8 rounded-3xl w-full max-w-md
-          bg-white/30 backdrop-blur-md
+          bg-white/20 backdrop-blur-md
           border border-white/40
           shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]
           transition-transform duration-300
@@ -86,7 +86,7 @@ const LoginPage = () => {
               type="email"
               name="email"
               placeholder="Email"
-              className="w-full border rounded pl-10 pr-4 py-2 bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full border rounded pl-10 pr-4 py-2 bg-white/0 focus:outline-none focus:ring-2 focus:ring-blue-400"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.email}
@@ -103,7 +103,7 @@ const LoginPage = () => {
               type="password"
               name="password"
               placeholder="Password"
-              className="w-full pl-10 pr-4 border rounded py-2 bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full pl-10 pr-4 border rounded py-2 bg-white/0 focus:outline-none focus:ring-2 focus:ring-blue-400"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.password}
@@ -132,10 +132,6 @@ const LoginPage = () => {
           <div className="text-center text-gray-600 text-sm">or login with</div>
 
           <GoogleLoginButton />
-
-          {/* <button className="w-full">
-            <GoogleLogin />
-          </button> */}
         </div>
 
         {/* Register redirect */}

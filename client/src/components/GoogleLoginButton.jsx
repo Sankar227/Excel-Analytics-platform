@@ -42,7 +42,7 @@ const GoogleLoginButton = () => {
 
   return (
     <button
-      className="flex items-center justify-center gap-2 w-full border px-4 py-2 rounded hover:bg-gray-100"
+      className="flex items-center justify-center gap-2 w-full border px-4 py-2 rounded hover:bg-gradient-to-br from-blue-200 via-purple-200 to-pink-200"
       onClick={googlelogin}
     >
       <img
@@ -50,7 +50,7 @@ const GoogleLoginButton = () => {
         alt="Google"
         className="w-5 h-5"
       />
-      Login with Google
+      Google
     </button>
   );
 };
