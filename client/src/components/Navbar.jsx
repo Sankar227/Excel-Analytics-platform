@@ -19,11 +19,9 @@ const Navbar = () => {
   const handleProfile = () => {
     if (user?._id) {
       navigate(`/profile/${user._id}`);
-      console.log("Navigating to profile for user ID:", user._id);
     } else {
       console.error("User ID is undefined");
     }
-    console.log("User object:", user);
   };
 
   // Close dropdown when clicking outside
@@ -113,9 +111,17 @@ const Navbar = () => {
                 className="flex items-center space-x-2 px-3 py-2 rounded-md transition"
               >
                 <div className="w-8 h-8 bg-indigo-500 text-white flex items-center justify-center rounded-full text-sm font-semibold">
-                  {user?.name
-                    ? user.name.charAt(0).toUpperCase()
-                    : user?.email.charAt(0).toUpperCase()}
+                  {user?.avatar ? (
+                    <img
+                      src={user.avatar}
+                      alt="Avatar"
+                      className="w-full h-full rounded-full"
+                    />
+                  ) : user?.name ? (
+                    user.name.charAt(0).toUpperCase()
+                  ) : (
+                    user?.email.charAt(0).toUpperCase()
+                  )}
                 </div>
                 <span className="text-sm font-medium text-gray-700 hover:text-indigo-600 hover:underline">
                   {user?.name.toUpperCase() || user?.email.toUpperCase()}
