@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const AIPage = () => {
-  const { id } = useParams(); // file ID
+  const { id } = useParams();
   const [fileData, setFileData] = useState([]);
   const [question, setQuestion] = useState("");
   const [insight, setInsight] = useState("");
@@ -51,41 +51,59 @@ const AIPage = () => {
     }
 
     setLoading(false);
+    // setQuestion(""); // Clear question after asking
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-10">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-3xl">
-        <h1 className="text-3xl font-bold text-center text-blue-600 mb-6">
-          🤖 Ask AI About Your File
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-100 flex items-center justify-center px-4 py-10">
+      <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-2xl w-full max-w-3xl relative overflow-hidden border border-gray-200 transition-all duration-500">
+        {/* Floating AI Avatar */}
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 bg-blue-100 border border-blue-300 w-16 h-16 rounded-full flex items-center justify-center shadow-md animate-bounce-slow">
+          <span className="text-3xl">🤖</span>
+        </div>
+
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-center text-blue-700 mb-10 pt-10">
+          Ask AI About Your File
         </h1>
 
-        <input
-          type="text"
-          className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-          placeholder="Ask a question about this file..."
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-        />
+        <div className="space-y-4">
+          <input
+            type="text"
+            className="w-full p-4 text-base sm:text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+            placeholder="Ask a question about your uploaded data..."
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
+          />
 
-        <button
-          onClick={handleAskQuestion}
-          className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300"
-          disabled={loading}
-        >
-          {loading ? "Getting Answer..." : "Ask AI"}
-        </button>
+          <button
+            onClick={handleAskQuestion}
+            disabled={loading}
+            className={`w-full py-3 text-base sm:text-lg font-semibold rounded-xl transform transition-all duration-300 ${
+              loading
+                ? "bg-blue-400 cursor-not-allowed"
+                : "bg-blue-600 hover:bg-blue-700 hover:scale-105 text-white"
+            }`}
+          >
+            {loading ? "Getting Answer..." : "Ask AI"}
+          </button>
 
-        {error && <p className="mt-4 text-red-500 text-center">{error}</p>}
+          {error && (
+            <div className="text-center text-red-500 font-medium">{error}</div>
+          )}
 
-        {insight && (
-          <div className="mt-6 bg-gray-50 p-4 border border-gray-300 rounded-md">
-            <h2 className="text-xl font-semibold mb-2 text-gray-800">
-              🧠 AI Answer:
-            </h2>
-            <p className="text-gray-700 whitespace-pre-wrap">{insight}</p>
-          </div>
-        )}
+          {/* AI Answer with fade-in animation */}
+          {insight && (
+            <div className="mt-6 bg-white border border-gray-200 rounded-xl p-5 shadow-md animate-fade-in">
+              <h2 className="text-2xl font-bold text-gray-800 mb-2 flex items-center gap-2">
+                🧠 AI Answer
+              </h2>
+
+              <p className="text-gray-700 text-base sm:text-lg whitespace-pre-wrap">
+                {insight}
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
