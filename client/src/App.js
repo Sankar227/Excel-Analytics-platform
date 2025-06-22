@@ -101,13 +101,6 @@ function App() {
                 element={isAuthenticated ? <ChartPage /> : <Navigate to="/" />}
               />
 
-              {/* <Route
-                path="/insights/"
-                element={
-                  isAuthenticated ? <AIPage /> : <Navigate to="/login" />
-                }
-              /> */}
-
               <Route
                 path="/insights/:id"
                 element={

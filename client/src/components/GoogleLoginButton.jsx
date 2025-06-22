@@ -12,7 +12,7 @@ const GoogleLoginButton = () => {
   const responseGoogle = async (authResult) => {
     try {
       if (authResult.code) {
-        // Send the code to your backend
+        // Send the code to backend
         const res = await axios.post("http://localhost:5001/auth/google", {
           code: authResult.code,
         });
