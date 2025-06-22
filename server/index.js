@@ -1,7 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
+const insightsRoutes = require("./routes/insights");
 
 const authRoutes = require("./routes/auth");
 const uploadRoutes = require("./routes/upload");
@@ -12,8 +14,7 @@ const PORT = process.env.PORT || 5001;
 
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
-
-
+app.use(bodyParser.json());
 
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -25,6 +26,9 @@ mongoose
 
 app.use("/auth", authRoutes);
 app.use("/upload", uploadRoutes);
+app.use("/insights", insightsRoutes);
+
+
 
 
 app.listen(PORT, () => {

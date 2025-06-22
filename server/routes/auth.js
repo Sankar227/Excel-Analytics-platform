@@ -22,30 +22,6 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// router.post("/login", async (req, res) => {
-//   const { email, password } = req.body;
-//   const user = await User.findOne({ email });
-//   if (!user) return res.status(404).json({ error: "User not found" });
-
-//   if (user.isBlocked) {
-//     return res.status(403).json({ error: "Your account has been blocked" });
-//   }
-
-//   const isValid = await bcrypt.compare(password, user.password);
-//   if (!isValid) return res.status(401).json({ error: "Invalid Details." });
-
-//   const token = jwt.sign(
-//     { id: user._id, isAdmin: user.isAdmin },
-//     process.env.JWT_SECRET
-//   );
-//   res.json({
-//     token,
-//     user: { _id: user._id, name: user.name, isAdmin: user.isAdmin },
-//   });
-// });
-
-// Get current user info (used after Google redirect)
-
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 

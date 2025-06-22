@@ -2,10 +2,16 @@ import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 
+import { useNavigate } from "react-router-dom";
+
 const UploadHistory = () => {
   const [history, setHistory] = useState([]);
   const [viewData, setViewData] = useState(null);
   const token = useSelector((state) => state.auth.token);
+
+  const [aiInsight, setAIInsight] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const fetchHistory = useCallback(async () => {
     try {
@@ -16,7 +22,7 @@ const UploadHistory = () => {
     } catch (err) {
       console.error("Failed to load history", err);
     }
-  }, [token]); 
+  }, [token]);
 
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this file?")) return;
@@ -80,6 +86,13 @@ const UploadHistory = () => {
                       className="text-red-600 border border-red-400 px-3 py-1 rounded-md hover:bg-red-50 text-sm transition-colors duration-200"
                     >
                       Delete
+                    </button>
+
+                    <button
+                      onClick={() => navigate(`/insights/${entry._id}`)}
+                      className="text-green-600 border border-green-400 px-3 py-1 rounded-md hover:bg-green-50 text-sm"
+                    >
+                      Get Insight
                     </button>
                   </td>
                 </tr>

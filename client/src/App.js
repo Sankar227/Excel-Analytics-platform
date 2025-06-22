@@ -20,6 +20,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import PrivateRouteAdmin from "./admin/PrivateRouteAdmin";
 import AdminPanel from "./admin/AdminPanel";
+import AIPage from "./pages/AIPage";
 
 function App() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -37,7 +38,6 @@ function App() {
 
     return <DashBoard />;
   };
-  
 
   return (
     <GoogleOAuthProvider clientId="521672164776-2kgs8nad06kgu3kp8undg3vo9bbsuc0c.apps.googleusercontent.com">
@@ -99,6 +99,20 @@ function App() {
               <Route
                 path="/chart"
                 element={isAuthenticated ? <ChartPage /> : <Navigate to="/" />}
+              />
+
+              {/* <Route
+                path="/insights/"
+                element={
+                  isAuthenticated ? <AIPage /> : <Navigate to="/login" />
+                }
+              /> */}
+
+              <Route
+                path="/insights/:id"
+                element={
+                  isAuthenticated ? <AIPage /> : <Navigate to="/login" />
+                }
               />
 
               <Route path="/profile/:id" element={<ProfilePage />} />

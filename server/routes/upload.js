@@ -93,15 +93,6 @@ router.delete("/admin/:id", authenticate, authorizeAdmin, async (req, res) => {
   }
 });
 
-// router.delete("/:id", authenticate, async (req, res) => {
-//   const deleted = await Upload.findOneAndDelete({
-//     _id: req.params.id,
-//     userId: req.user.id,
-//   });
-//   if (!deleted) return res.status(404).json({ error: "File not found" });
-//   res.json({ success: true, message: "File deleted successfully." });
-// });
-
 router.delete("/:id", authenticate, async (req, res) => {
   try {
     const deleted = await Upload.findOneAndDelete({
@@ -115,6 +106,29 @@ router.delete("/:id", authenticate, async (req, res) => {
   } catch (err) {
     console.error("User delete error:", err);
     res.status(500).json({ error: "Failed to delete file." });
+  }
+});
+
+// Get a single uploaded file's preview by ID
+router.get("/:id", authenticate, async (req, res) => {
+  try {
+    const upload = await Upload.findOne({
+      _id: req.params.id,
+      userId: req.user.id,
+    });
+
+    if (!upload) {
+      return res.status(404).json({ error: "File not found" });
+    }
+
+    res.json({
+      fileName: upload.fileName,
+      timestamp: upload.timestamp,
+      preview: upload.preview,
+    });
+  } catch (err) {
+    console.error("Fetch single upload error:", err);
+    res.status(500).json({ error: "Failed to retrieve file." });
   }
 });
 
