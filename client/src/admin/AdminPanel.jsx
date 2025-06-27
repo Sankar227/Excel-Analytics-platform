@@ -35,10 +35,12 @@ const AdminPanel = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure to delete this file?")) {
       // await axios.delete(`http://localhost:5001/upload/admin/${id}`, {
-      await axios.delete(`https://excel-analytics-platform-m9zv.onrender.com/upload/admin/${id}`, {
-      
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://excel-analytics-platform-backend-qnaz.onrender.com/upload/admin/${id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       dispatch(removeUpload(id));
     }
   };
