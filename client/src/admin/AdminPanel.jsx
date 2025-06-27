@@ -14,8 +14,10 @@ const AdminPanel = () => {
     const fetchData = async () => {
       const config = { headers: { Authorization: `Bearer ${token}` } };
       const [usersRes, uploadsRes] = await Promise.all([
-        axios.get("http://localhost:5001/auth/admin/users", config),
-        axios.get("http://localhost:5001/upload/admin/all-uploads", config),
+        // axios.get("http://localhost:5001/auth/admin/users", config),
+        // axios.get("http://localhost:5001/upload/admin/all-uploads", config),
+        axios.get("https://excel-analytics-platform-m9zv.onrender.com/auth/admin/users", config),
+        axios.get("https://excel-analytics-platform-m9zv.onrender.com/upload/admin/all-uploads", config),
       ]);
       dispatch(setUsers(usersRes.data));
       dispatch(setUploads(uploadsRes.data));
@@ -26,7 +28,9 @@ const AdminPanel = () => {
 
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure to delete this file?")) {
-      await axios.delete(`http://localhost:5001/upload/admin/${id}`, {
+      // await axios.delete(`http://localhost:5001/upload/admin/${id}`, {
+      await axios.delete(`https://excel-analytics-platform-m9zv.onrender.com/upload/admin/${id}`, {
+      
         headers: { Authorization: `Bearer ${token}` },
       });
       dispatch(removeUpload(id));
