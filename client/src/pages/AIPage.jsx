@@ -44,10 +44,13 @@ const AIPage = () => {
 
     try {
       // const response = await axios.post("http://localhost:5001/insights", {
-      const response = await axios.post("https://excel-analytics-platform-m9zv.onrender.com/insights", {      
-        data: fileData,
-        question,
-      });
+      const response = await axios.post(
+        "https://excel-analytics-platform-m9zv.onrender.com/insights",
+        {
+          data: fileData,
+          question,
+        }
+      );
 
       setInsight(response.data.insight || "No response received.");
     } catch (err) {
