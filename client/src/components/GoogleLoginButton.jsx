@@ -90,7 +90,7 @@ const GoogleLoginButton = () => {
         return;
       if (!event.data.code) return;
 
-      popup?.close();
+      // popup?.close();
       window.removeEventListener("message", listener);
 
       try {
