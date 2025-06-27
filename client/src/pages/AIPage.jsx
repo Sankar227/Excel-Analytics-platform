@@ -45,7 +45,7 @@ const AIPage = () => {
     try {
       // const response = await axios.post("http://localhost:5001/insights", {
       const response = await axios.post(
-        "https://excel-analytics-platform-m9zv.onrender.com",
+        "https://excel-analytics-platform-m9zv.onrender.com/insights",
         {
           data: fileData,
           question,
