@@ -2,32 +2,6 @@ const express = require("express");
 const router = express.Router();
 const axios = require("axios");
 
-// // AI insight route
-// router.post("/", async (req, res) => {
-//   const { userInput } = req.body;
-
-//   if (!userInput) {
-//     return res.status(400).json({ error: "Input is required" });
-//   }
-
-//   try {
-//     const geminiRes = await axios.post(
-//       `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${process.env.GEMINI_API_KEY}`,
-//       {
-//         contents: [{ parts: [{ text: userInput }] }],
-//       }
-//     );
-
-//     const aiText = geminiRes.data.candidates?.[0]?.content?.parts?.[0]?.text;
-//     res.json({ insight: aiText });
-//   } catch (err) {
-//     console.error("Gemini API Error:", err.response?.data || err.message);
-//     res.status(500).json({ error: "Failed to generate AI insight" });
-//   }
-// });
-
-// module.exports = router;
-
 router.post("/", async (req, res) => {
   const { data, question } = req.body;
 
@@ -65,6 +39,5 @@ router.post("/", async (req, res) => {
     res.status(500).json({ error: "Failed to generate AI insight" });
   }
 });
-
 
 module.exports = router;
