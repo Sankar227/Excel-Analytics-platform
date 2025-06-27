@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5001;
 // app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(
   cors({
-    origin: "https://incomparable-babka-ac3971.netlify.app",
+    origin: "https://excel-analytics-platform-frontend-7gp4.onrender.com",
     credentials: true,
   })
 );
