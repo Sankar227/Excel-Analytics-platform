@@ -14,7 +14,9 @@ const AllUsersPage = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:5001/auth/admin/users", {
+      // const res = await axios.get("http://localhost:5001/auth/admin/users", {
+      const res = await axios.get("https://excel-analytics-platform-m9zv.onrender.com/auth/admin/users", {
+      
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers(res.data);
@@ -26,7 +28,9 @@ const AllUsersPage = () => {
   const toggleBlockUser = async (userId, isCurrentlyBlocked) => {
     try {
       await axios.patch(
-        `http://localhost:5001/auth/admin/users/${userId}/block`,
+        // `http://localhost:5001/auth/admin/users/${userId}/block`,
+        `https://excel-analytics-platform-m9zv.onrender.com/auth/admin/users/${userId}/block`,
+        
         { isBlocked: !isCurrentlyBlocked },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -49,7 +53,9 @@ const AllUsersPage = () => {
     }
 
     try {
-      await axios.delete(`http://localhost:5001/auth/admin/users/${_id}`, {
+      // await axios.delete(`http://localhost:5001/auth/admin/users/${_id}`, {
+      await axios.delete(`https://excel-analytics-platform-m9zv.onrender.com/auth/admin/users/${_id}`, {
+      
         headers: { Authorization: `Bearer ${token}` },
       });
       toast.success("User deleted successfully");

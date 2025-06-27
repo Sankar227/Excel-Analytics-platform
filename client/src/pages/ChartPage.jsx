@@ -59,7 +59,8 @@ const ChartPage = () => {
   useEffect(() => {
     const fetchUploadHistory = async () => {
       try {
-        const res = await axios.get("http://localhost:5001/upload/history", {
+        // const res = await axios.get("http://localhost:5001/upload/history", {
+        const res = await axios.get("https://excel-analytics-platform-m9zv.onrender.com/upload/history", {        
           headers: { Authorization: `Bearer ${token}` },
         });
         setUploadHistory(res.data);

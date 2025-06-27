@@ -31,8 +31,10 @@ const SetPasswordPage = () => {
     }
 
     try {
+      // const res = await axios.post(
+      //   "http://localhost:5001/auth/set-password",
       const res = await axios.post(
-        "http://localhost:5001/auth/set-password",
+        "https://excel-analytics-platform-m9zv.onrender.com/auth/set-password",
         formData,
         {
           headers: {
