@@ -28,7 +28,9 @@ const DashBoard = () => {
 
     if (urlToken && !token) {
       axios
-        .get("http://localhost:5001/auth/me", {
+        // .get("http://localhost:5001/auth/me", {
+        .get("https://excel-analytics-platform-m9zv.onrender.com/auth/me", {
+          
           headers: { Authorization: `Bearer ${urlToken}` },
         })
         .then((res) => {
@@ -45,7 +47,8 @@ const DashBoard = () => {
   // Fetch upload history
   const fetchHistory = async () => {
     try {
-      const res = await axios.get("http://localhost:5001/upload/history", {
+      // const res = await axios.get("http://localhost:5001/upload/history", {
+       const res = await axios.get("https://excel-analytics-platform-m9zv.onrender.com/upload/history", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setHistory(res.data);
