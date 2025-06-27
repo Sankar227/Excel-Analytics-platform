@@ -30,8 +30,8 @@ const LoginPage = () => {
       try {
         const res = await axios.post(
           // "http://localhost:5001/auth/login",
-          "https://excel-analytics-platform-m9zv.onrender.com/auth/login",
-          
+          "https://excel-analytics-platform-backend-qnaz.onrender.com/auth/login",
+
           values
         );
         toast.success("Login successful!");

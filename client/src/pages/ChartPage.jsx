@@ -60,9 +60,12 @@ const ChartPage = () => {
     const fetchUploadHistory = async () => {
       try {
         // const res = await axios.get("http://localhost:5001/upload/history", {
-        const res = await axios.get("https://excel-analytics-platform-m9zv.onrender.com/upload/history", {        
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await axios.get(
+          "https://excel-analytics-platform-backend-qnaz.onrender.com/upload/history",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         setUploadHistory(res.data);
       } catch (err) {
         console.error("Failed to fetch upload history", err);

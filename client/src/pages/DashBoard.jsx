@@ -29,10 +29,12 @@ const DashBoard = () => {
     if (urlToken && !token) {
       axios
         // .get("http://localhost:5001/auth/me", {
-        .get("https://excel-analytics-platform-m9zv.onrender.com/auth/me", {
-          
-          headers: { Authorization: `Bearer ${urlToken}` },
-        })
+        .get(
+          "https://excel-analytics-platform-backend-qnaz.onrender.com/auth/me",
+          {
+            headers: { Authorization: `Bearer ${urlToken}` },
+          }
+        )
         .then((res) => {
           dispatch(setAuthData({ token: urlToken, user: res.data }));
           navigate("/dashboard", { replace: true }); // remove token param
@@ -48,9 +50,12 @@ const DashBoard = () => {
   const fetchHistory = async () => {
     try {
       // const res = await axios.get("http://localhost:5001/upload/history", {
-       const res = await axios.get("https://excel-analytics-platform-m9zv.onrender.com/upload/history", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+       const res = await axios.get(
+         "https://excel-analytics-platform-backend-qnaz.onrender.com/upload/history",
+         {
+           headers: { Authorization: `Bearer ${token}` },
+         }
+       );
       setHistory(res.data);
     } catch (err) {
       console.error("Failed to load history", err);

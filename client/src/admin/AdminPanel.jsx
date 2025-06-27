@@ -16,8 +16,14 @@ const AdminPanel = () => {
       const [usersRes, uploadsRes] = await Promise.all([
         // axios.get("http://localhost:5001/auth/admin/users", config),
         // axios.get("http://localhost:5001/upload/admin/all-uploads", config),
-        axios.get("https://excel-analytics-platform-m9zv.onrender.com/auth/admin/users", config),
-        axios.get("https://excel-analytics-platform-m9zv.onrender.com/upload/admin/all-uploads", config),
+        axios.get(
+          "https://excel-analytics-platform-backend-qnaz.onrender.com/auth/admin/users",
+          config
+        ),
+        axios.get(
+          "https://excel-analytics-platform-backend-qnaz.onrender.com/upload/admin/all-uploads",
+          config
+        ),
       ]);
       dispatch(setUsers(usersRes.data));
       dispatch(setUploads(uploadsRes.data));

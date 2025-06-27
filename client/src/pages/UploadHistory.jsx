@@ -16,10 +16,12 @@ const UploadHistory = () => {
   const fetchHistory = useCallback(async () => {
     try {
       // const res = await axios.get("http://localhost:5001/upload/history", {
-      const res = await axios.get("https://excel-analytics-platform-m9zv.onrender.com/upload/history", {
-      
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await axios.get(
+        "https://excel-analytics-platform-backend-qnaz.onrender.com/upload/history",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setHistory(res.data);
     } catch (err) {
       console.error("Failed to load history", err);
@@ -30,10 +32,12 @@ const UploadHistory = () => {
     if (!window.confirm("Are you sure you want to delete this file?")) return;
     try {
       // await axios.delete(`http://localhost:5001/upload/${id}`, {
-      await axios.delete(`https://excel-analytics-platform-m9zv.onrender.com/upload/${id}`, {
-      
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://excel-analytics-platform-backend-qnaz.onrender.com/upload/${id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       fetchHistory();
     } catch (err) {
       alert("Failed to delete file");

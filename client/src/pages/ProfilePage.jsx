@@ -83,7 +83,7 @@ const ProfilePage = () => {
     try {
       await axios.put(
         // `http://localhost:5001/auth/profile/users/${id}`,
-         `https://excel-analytics-platform-m9zv.onrender.com/auth/profile/users/${id}`,
+        `https://excel-analytics-platform-backend-qnaz.onrender.com/auth/profile/users/${id}`,
         {
           name: formData.username,
           email: formData.email,

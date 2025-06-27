@@ -23,12 +23,16 @@ const UploadPage = () => {
 
     try {
       // const res = await axios.post("http://localhost:5001/upload", formData, {
-        const res = await axios.post("https://excel-analytics-platform-m9zv.onrender.com/upload", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      });
+        const res = await axios.post(
+          "https://excel-analytics-platform-backend-qnaz.onrender.com/upload",
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
       dispatch(setData(res.data.data));
       toast.success("File uploaded successfully");
       setFile(null); // Clear the file input after upload

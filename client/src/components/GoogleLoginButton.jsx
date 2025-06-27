@@ -14,10 +14,12 @@ const GoogleLoginButton = () => {
       if (authResult.code) {
         // Send the code to backend
         // const res = await axios.post("http://localhost:5001/auth/google", {
-        const res = await axios.post("https://excel-analytics-platform-m9zv.onrender.com/auth/google", {
-        
-          code: authResult.code,
-        });
+        const res = await axios.post(
+          "https://excel-analytics-platform-backend-qnaz.onrender.com/auth/google",
+          {
+            code: authResult.code,
+          }
+        );
 
         const { token, user } = res.data;
 

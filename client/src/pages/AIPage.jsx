@@ -16,9 +16,12 @@ const AIPage = () => {
     const fetchFile = async () => {
       try {
         // const res = await axios.get(`http://localhost:5001/upload/${id}`, {
-        const res = await axios.get(`https://excel-analytics-platform-m9zv.onrender.com/upload/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await axios.get(
+          `https://excel-analytics-platform-backend-qnaz.onrender.com/upload/${id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         setFileData(res.data.preview);
       } catch (err) {
         console.error(err);

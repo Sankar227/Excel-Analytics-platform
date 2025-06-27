@@ -38,7 +38,10 @@ const RegisterPage = () => {
       setLoading(true);
       try {
         // await axios.post("http://localhost:5001/auth/register", values);
-        await axios.post("https://excel-analytics-platform-m9zv.onrender.com/auth/register", values);
+        await axios.post(
+          "https://excel-analytics-platform-backend-qnaz.onrender.com/auth/register",
+          values
+        );
         
         toast.success("Registration successful! Redirecting...");
         setTimeout(() => navigate("/"), 1000);
