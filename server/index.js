@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5001;
 // app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(
   cors({
-    origin: "https://incomparable-babka-ac3971.netlify.app/",
+    origin: "https://incomparable-babka-ac3971.netlify.app",
     credentials: true,
   })
 );
@@ -34,9 +34,6 @@ mongoose
 app.use("/auth", authRoutes);
 app.use("/upload", uploadRoutes);
 app.use("/insights", insightsRoutes);
-
-
-
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
