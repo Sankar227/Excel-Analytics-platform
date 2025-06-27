@@ -21,6 +21,7 @@ import Footer from "./components/Footer";
 import PrivateRouteAdmin from "./admin/PrivateRouteAdmin";
 import AdminPanel from "./admin/AdminPanel";
 import AIPage from "./pages/AIPage";
+import GoogleCallback from "./pages/GoogleCallback";
 
 function App() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -69,6 +70,8 @@ function App() {
               />
 
               <Route path="/dashboard" element={<ProtectedDashboard />} />
+
+              <Route path="/google/callback" element={<GoogleCallback />} />
 
               <Route
                 path="/set-password"
