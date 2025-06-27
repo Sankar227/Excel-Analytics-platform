@@ -22,7 +22,8 @@ const UploadPage = () => {
     formData.append("file", file);
 
     try {
-      const res = await axios.post("http://localhost:5001/upload", formData, {
+      // const res = await axios.post("http://localhost:5001/upload", formData, {
+        const res = await axios.post("https://excel-analytics-platform-m9zv.onrender.com/upload", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
