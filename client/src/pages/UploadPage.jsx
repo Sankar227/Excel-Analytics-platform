@@ -35,7 +35,7 @@ const UploadPage = () => {
         );
       dispatch(setData(res.data.data));
       toast.success("File uploaded successfully");
-      setFile(null); // Clear the file input after upload
+      setFile(); // Clear the file input after upload
     } catch (err) {
       alert("Upload failed");
     }
